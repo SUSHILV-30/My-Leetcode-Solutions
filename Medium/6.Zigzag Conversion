@@ -1,0 +1,22 @@
+class Solution(object):
+    def convert(self, s, numRows):
+        if numRows == 1:
+            return s
+
+        s1 = [""] * numRows
+
+        j = 0
+
+        for i, x in enumerate(s):
+
+            s1[j] = s1[j] + s[i]
+
+            if j == numRows - 1:
+                k = -1
+
+            elif j == 0:
+                k = 1
+
+            j = j + k
+
+        return "".join(s1)
