@@ -1,0 +1,31 @@
+class Solution(object):
+    def threeSum(self, nums):
+        nums.sort()
+        n = len(nums)
+        list1 = []
+        seen = set()
+        for i in range(n):
+            left = i+1
+            right = n-1
+            
+            while left < right:
+                if i!= left and left!=right and i!= right:
+                    if nums[i]+nums[left]+nums[right] == 0:
+                        triplet = tuple([nums[i],nums[left],nums[right]])
+
+                        if triplet not in seen:
+                            seen.add(triplet)
+                            list1.append(list(triplet))
+
+
+                        left += 1
+                        right -= 1
+
+                    elif nums[i]+nums[left]+nums[right] < 0:
+                        left += 1
+                    else:
+                        right -= 1
+        return list1
+
+    
+        
