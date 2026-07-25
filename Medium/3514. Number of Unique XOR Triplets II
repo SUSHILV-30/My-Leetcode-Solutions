@@ -1,0 +1,15 @@
+class Solution(object):
+    def uniqueXorTriplets(self, nums):
+        D = sorted(set(nums))
+
+        B1 = set()
+        for i in D:
+            for v in D:
+                B1.add(i ^ v)
+
+        B2 = set()
+        for i in B1:
+            for v in D:
+                B2.add(i ^ v)
+
+        return len(B2)
