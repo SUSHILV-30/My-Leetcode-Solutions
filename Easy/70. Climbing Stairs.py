@@ -1,17 +1,16 @@
 class Solution(object):
     def climbStairs(self, n):
-        count =[0]
+        memo = {}
 
         def climb(current):
-            
             if current == n:
-                count[0]+=1
-                return
-            elif current>n:
-                return
+                return 1
+            if current > n:
+                return 0
+            if current in memo:
+                return memo[current]
 
-            climb(current+1)
-            climb(current+2)
+            memo[current] = climb(current + 1) + climb(current + 2)
+            return memo[current]
 
-        climb(0)
-        return count[0]
+        return climb(0)
